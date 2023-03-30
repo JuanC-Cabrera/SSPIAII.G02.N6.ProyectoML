@@ -1,0 +1,18 @@
+﻿ID ,Dia ,Turno ,Num_Personas ,Tipo_Grupo,Metodo_Pago,Consumo,Propina
+1,Miercoles,Noche,2,Pareja,Efectivo,335,0
+2,Miercoles,Noche,4,Amigos,Efectivo,585,15
+3,Miercoles,Noche,3,Amigos,Efectivo,513,57
+4,Miercoles,Noche,2,Pareja,Efectivo,470,30
+5,Miercoles,Noche,2,Pareja,Efectivo,268,20
+6,Miercoles,Noche,2,Pareja,Efectivo,313,17
+7,Miercoles,Noche,4,Amigos,Efectivo,899,61
+8,Miercoles,Noche,2,Pareja,Efectivo,359,36
+9,Miercoles,Noche,1,Solo,Efectivo,99,11
+10,Miercoles,Noche,2,Amigos,Tarjeta,287,20
+11,Miercoles,Noche,7,Amigos,Efectivo,994,103
+12,Miercoles,Noche,4,Familia,Efectivo,646,50
+13,Miercoles,Noche,2,Pareja,Efectivo,414,36
+14,Miercoles,Noche,7,Familia,Efectivo,1675,6
+15,Miercoles,Noche,4,Familia,Efectivo,477,17
+16,Miercoles,Noche,2,Pareja,Tarjeta,344,36
+17,Miercoles,Noche,5,Familia,Efectivo,955,45
