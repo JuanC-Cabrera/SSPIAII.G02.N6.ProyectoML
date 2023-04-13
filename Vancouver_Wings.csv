@@ -111,3 +111,118 @@
 110,Domingo,Tarde ,4,Amigos,Efectivo,658,42
 111,Domingo,Tarde ,4,Familia,Efectivo,818,82
 112,Domingo,Tarde ,2,Pareja,Efectivo,60,12
+113,Domingo,Tarde ,2,Pareja,Efectivo,418,12
+114,Domingo,Tarde ,2,Pareja,Efectivo,501,19
+115,Domingo,Tarde ,6,Familia,Efectivo,1044,101
+116,Domingo,Tarde ,2,Pareja,Tarjeta,337,40
+117,Domingo,Noche,6,Familia,Efectivo,985,60
+118,Domingo,Noche,3,Familia,Efectivo,302,28
+119,Domingo,Noche,2,Pareja,Efectivo,379,21
+120,Domingo,Noche,6,Familia,Efectivo,970,30
+121,Domingo,Noche,2,Pareja,Tarjeta,377,57
+122,Domingo,Noche,7,Familia,Efectivo,1375,125
+123,Domingo,Noche,2,Pareja,Efectivo,199,21
+124,Domingo,Noche,2,Pareja,Tarjeta,611,69
+125,Domingo,Noche,2,Pareja,Efectivo,309,91
+126,Lunes,Tarde ,4,Familia,Efectivo,660,30
+127,Lunes,Tarde ,2,Familia,Efectivo,367,37
+128,Lunes,Tarde ,2,Pareja,Efectivo,198,7
+129,Lunes,Tarde ,3,Familia,Efectivo,349,21
+130,Lunes,Tarde ,4,Familia,Efectivo,692,28
+131,Lunes,Tarde ,6,Familia,Efectivo,603,17
+132,Lunes,Tarde ,2,Pareja,Efectivo,223,27
+133,Lunes,Tarde ,3,Familia,Efectivo,398,30
+134,Lunes,Tarde ,4,Amigos,Efectivo,508,12
+135,Lunes,Tarde ,2,Amigos,Efectivo,173,27
+136,Lunes,Tarde ,2,Pareja,Efectivo,380,38
+137,Lunes,Tarde ,2,Pareja,Efectivo,338,62
+138,Lunes,Tarde ,4,Familia,Tarjeta,522,52
+139,Lunes,Tarde ,5,Familia,Efectivo,953,47
+140,Lunes,Tarde ,13,Familia,Efectivo,1773,147
+141,Lunes,Tarde ,7,Amigos,Tarjeta,1114,110
+142,Miercoles,Tarde ,2,Amigos,Efectivo,58,10
+143,Miercoles,Tarde ,2,Amigos,Efectivo,292,25
+144,Miercoles,Tarde ,2,Pareja,Efectivo,263,27
+145,Miercoles,Tarde ,2,Pareja,Efectivo,423,77
+146,Miercoles,Tarde ,4,Familia,Efectivo,396,40
+147,Miercoles,Tarde ,7,Familia,Efectivo,1081,60
+148,Miercoles,Tarde ,6,Familia,Efectivo,1237,52
+149,Miercoles,Tarde ,1,Solo,Tarjeta,214,21
+150,Miercoles,Tarde ,4,Familia,Efectivo,554,46
+151,Miercoles,Tarde ,3,Familia,Efectivo,406,24
+152,Miercoles,Tarde ,2,Pareja,Efectivo,273,0
+153,Sábado,Tarde ,2,Pareja,Efectivo,251,29
+154,Sábado,Tarde ,1,Solo,Tarjeta,110,19
+155,Sábado,Tarde ,3,Familia,Efectivo,674,46
+156,Sábado,Tarde ,4,Familia,Efectivo,418,32
+157,Sábado,Tarde ,4,Familia,Efectivo,224,16
+158,Sábado,Tarde ,2,Amigos,Efectivo,381,9
+159,Sábado,Tarde ,2,Amigos,Efectivo,371,38
+160,Sábado,Tarde ,3,Familia,Efectivo,606,40
+161,Sábado,Tarde ,3,Familia,Efectivo,549,14
+162,Sábado,Tarde ,1,Solo,Tarjeta,134,0
+163,Sábado,Tarde ,3,Familia,Efectivo,652,28
+164,Sábado,Tarde ,3,Familia,Efectivo,330,40
+165,Sábado,Tarde ,9,Familia,Efectivo,1245,55
+166,Sábado,Tarde ,2,Pareja,Efectivo,253,25
+167,Sábado,Tarde ,6,Familia,Efectivo,509,11
+168,Sábado,Tarde ,2,Amigos,Efectivo,160,10
+169,Sábado,Tarde ,4,Familia,Efectivo,454,20
+170,Sábado,Tarde ,8,Familia,Efectivo,1459,41
+171,Sábado,Tarde ,6,Familia,Efectivo,854,20
+172,Sábado,Tarde ,2,Pareja,Efectivo,447,13
+173,Sábado,Tarde ,3,Familia,Efectivo,533,37
+174,Sábado,Tarde ,4,Amigos,Efectivo,750,50
+175,Sábado,Noche,2,Pareja,Efectivo,147,13
+176,Sábado,Noche,5,Amigos,Efectivo,338,19
+177,Sábado,Noche,5,Familia,Efectivo,808,52
+178,Sábado,Noche,2,Pareja,Efectivo,147,13
+179,Sábado,Noche,5,Familia,Efectivo,1199,56
+180,Sábado,Noche,3,Familia,Efectivo,441,59
+181,Sábado,Noche,4,Familia,Efectivo,500,50
+182,Sábado,Noche,5,Amigos,Efectivo,417,0
+183,Sábado,Noche,2,Pareja,Efectivo,224,0
+184,Sábado,Noche,2,Pareja,Tarjeta,429,7
+185,Sábado,Noche,4,Amigos,Efectivo,941,59
+186,Sábado,Noche,2,Pareja,Tarjeta,359,29
+187,Sábado,Noche,2,Pareja,Efectivo,394,6
+188,Sábado,Noche,2,Pareja,Efectivo,317,23
+189,Sábado,Noche,2,Pareja,Efectivo,292,8
+190,Sábado,Noche,4,Amigos,Efectivo,460,0
+191,Sábado,Noche,2,Pareja,Efectivo,308,2
+192,Sábado,Noche,4,Amigos,Efectivo,699,51
+193,Sábado,Noche,2,Pareja,Efectivo,341,37
+194,Sábado,Noche,2,Pareja,Efectivo,498,22
+195,Sábado,Noche,4,Amigos,Efectivo,546,24
+196,Sábado,Noche,6,Familia,Efectivo,1149,51
+197,Sábado,Noche,2,Pareja,Tarjeta,704,35
+198,Sábado,Noche,2,Amigos,Efectivo,337,39
+199,Sábado,Noche,3,Amigos,Efectivo,513,47
+200,Sábado,Noche,5,Amigos,Efectivo,973,107
+201,Domingo,Tarde ,2,Pareja,Efectivo,364,25
+202,Domingo,Tarde ,3,Familia,Efectivo,174,26
+203,Domingo,Tarde ,1,Solo,Efectivo,39,0
+204,Domingo,Tarde ,2,Pareja,Efectivo,263,17
+205,Domingo,Tarde ,3,Familia,Efectivo,472,28
+206,Domingo,Tarde ,5,Familia,Efectivo,615,35
+207,Domingo,Tarde ,2,Pareja,Efectivo,318,32
+208,Domingo,Tarde ,2,Familia,Efectivo,345,15
+209,Domingo,Tarde ,10,Familia,Efectivo,1476,50
+210,Domingo,Tarde ,2,Familia,Efectivo,376,16
+211,Domingo,Tarde ,2,Pareja,Efectivo,419,0
+212,Domingo,Tarde ,3,Familia,Efectivo,423,17
+213,Domingo,Tarde ,2,Amigos,Efectivo,389,31
+214,Domingo,Tarde ,6,Familia,Efectivo,855,20
+215,Domingo,Tarde ,2,Amigos,Efectivo,303,20
+216,Domingo,Tarde ,9,Amigos,Efectivo,1485,18
+217,Domingo,Tarde ,2,Pareja,Efectivo,343,17
+218,Domingo,Tarde ,4,Familia,Efectivo,640,34
+219,Domingo,Tarde ,4,Familia,Efectivo,636,24
+220,Domingo,Tarde ,2,Amigos,Efectivo,332,18
+221,Domingo,Tarde ,4,Familia,Tarjeta,735,70
+222,Domingo,Tarde ,3,Amigos,Efectivo,810,5
+223,Domingo,Tarde ,3,Familia,Tarjeta,656,20
+224,Domingo,Tarde ,3,Familia,Efectivo,359,0
+225,Domingo,Tarde ,7,Amigos,Efectivo,842,87
+226,Domingo,Tarde ,3,Familia,Efectivo,417,21
+227,Domingo,Tarde ,4,Familia,Tarjeta,467,46
