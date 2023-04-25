@@ -141,3 +141,44 @@ matrizLibrary
 #Detection Prevalence   0.3978   0.29032    0.2688   0.04301
 #Balanced Accuracy      0.6964   0.62662    0.8205   1.00000
 
+# Random forest aplicado al método de pago.
+mdl.Forest <- randomForest(formula = as.factor(Metodo_Pago) ~ ., data = trainig)
+
+predictData <- predict(mdl.Forest, type = 'class', newdata = test)
+
+# Matríz de confusión
+matriz <- table(test$Metodo_Pago,predictData)
+matrizRandom <- matriz
+matrizRandom
+#      0  1
+#  0  75  3
+#  1  14  1
+
+# Generar la matriz de confusión para calcular F1 score.
+matrizLibrary <- confusionMatrix(matriz,positive = "1", mode = "everything")
+F1 <- matrizLibrary$byClass['F1']
+matrizLibrary
+
+# Accuracy : 0.8172          
+# 95% CI : (0.7235, 0.8898)
+# No Information Rate : 0.957           
+# P-Value [Acc > NIR] : 1.00000         
+
+# Kappa : 0.0401          
+
+# Mcnemar's Test P-Value : 0.01529         
+                                          
+#            Sensitivity : 0.25000         
+#            Specificity : 0.84270         
+#         Pos Pred Value : 0.06667         
+#         Neg Pred Value : 0.96154         
+#              Precision : 0.06667         
+#                 Recall : 0.25000         
+#                     F1 : 0.10526         
+#             Prevalence : 0.04301         
+#         Detection Rate : 0.01075         
+#   Detection Prevalence : 0.16129         
+#      Balanced Accuracy : 0.54635         
+                                          
+#       'Positive' Class : 1               
+                              
