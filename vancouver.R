@@ -7,6 +7,8 @@ library(DescTools)
 library(ggplot2)
 library(plyr)
 library(caTools)
+library(caret)
+
 
 
 #install.packages("DescTools")
@@ -120,3 +122,22 @@ matrizRandom
 #   2  12  8   7   0
 #   3  0   0   25  0
 #   4  0   0   0   4
+
+# Generar la matriz de confusión para calcular F1 score.
+matrizLibrary <- confusionMatrix(matriz,positive = "1", mode = "everything")
+F1 <- matrizLibrary$byClass['F1']
+matrizLibrary
+
+#                      Class: 1  Class: 2  Class: 3  Class: 4
+#Sensitivity            0.6471   0.50000    0.6410   1.00000
+#Specificity            0.7458   0.75325    1.0000   1.00000
+#Pos Pred Value         0.5946   0.29630    1.0000   1.00000
+#Neg Pred Value         0.7857   0.87879    0.7941   1.00000
+#Precision              0.5946   0.29630    1.0000   1.00000
+#Recall                 0.6471   0.50000    0.6410   1.00000
+#F1                     0.6197   0.37209    0.7813   1.00000
+#Prevalence             0.3656   0.17204    0.4194   0.04301
+#Detection Rate         0.2366   0.08602    0.2688   0.04301
+#Detection Prevalence   0.3978   0.29032    0.2688   0.04301
+#Balanced Accuracy      0.6964   0.62662    0.8205   1.00000
+
