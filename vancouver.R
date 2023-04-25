@@ -1,16 +1,18 @@
 options(scipen = 999)
 set.seed(1991)
 getwd() 
-
+setwd("/Users/jack9/Downloads/Proyecto SSPIA II/SSPIAII.G02.N6.ProyectoML")
 
 library(DescTools)
 library(ggplot2)
 library(plyr)
+library(caTools)
+
 
 #install.packages("DescTools")
 
 #Importar nuestro dataset
-df.Datos <- read.csv("IA/SSPIAII.G02.N6.ProyectoML/Vancouver_Wings.csv",   #Cambiar ruta
+df.Datos <- read.csv("Vancouver_Wings.csv",   #Cambiar ruta
                      header =  T,
                      stringsAsFactors = T)
 
@@ -58,7 +60,7 @@ df.Datos$Metodo_Pago <- factor(df.Datos$Metodo_Pago,
 ############### Analisis descriptivo 
 
 library(ggplot2)
-# Histrograma de los grupos de personas que visitaron el local 
+# Histrograma de los grupos de personas que visitaron el local. 
 ggplot(df.Datos, aes(x = Tipo_Grupo)) +
   geom_histogram(stat = "count", fill = "azure1", color = "blue", binwidth = 0.5) +
   labs(title = "Distribucion de los grupos ",
@@ -70,7 +72,7 @@ ggplot(df.Datos, aes(x = Tipo_Grupo)) +
 
 count(df.Datos$Dia)
 
-# Histrograma de los grupos de personas que visitaron el local 
+# Histrograma de los la cantidad de gente que iba por dia. 
 ggplot(df.Datos, aes(x = Dia)) +
   geom_histogram(stat = "count", fill = "azure1", color = "blue", binwidth = 0.5) +
   labs(title = "Distribucion de los días de la semana",
@@ -89,7 +91,32 @@ ggplot(df.Datos, aes(x = Metodo_Pago, fill = Metodo_Pago)) +
        y = "Frecuencia") +
   theme(plot.title = element_text(hjust = 0.5))
 
+############################################################################################################
 
-############### Analisis descriptivo 
+# Separación de los datos que se utilizaran.
+split <- sample.split(df.Datos$Tipo_Grupo, SplitRatio = 0.7) 
+trainig <- subset(df.Datos, split == T) 
+test <- subset(df.Datos, split == F)
 
- 
+# Seleccionar solo las variables numéricas.
+# Aquí, sapply(df.Datos, is.numeric) devuelve un vector lógico que indica qué columnas de df.Datos
+# son numéricas.
+df.num <- df.Datos[, sapply(df.Datos, is.numeric)]
+
+# Calcular la matriz de correlación.
+cor_mat <- cor(df.num)
+
+# Random forest
+mdl.Forest <- randomForest(formula = as.factor(Tipo_Grupo) ~ ., data = trainig)
+
+predictData <- predict(mdl.Forest, type = 'class', newdata = test)
+
+# Matríz de confusión
+matriz <- table(test$Tipo_Grupo,predictData)
+matrizRandom <- matriz
+matrizRandom
+#      1   2   3   4
+#   1  22  8   7   0
+#   2  12  8   7   0
+#   3  0   0   25  0
+#   4  0   0   0   4
