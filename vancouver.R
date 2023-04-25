@@ -8,7 +8,7 @@ library(ggplot2)
 library(plyr)
 library(caTools)
 library(caret)
-
+library(rpart)
 
 
 #install.packages("DescTools")
@@ -182,3 +182,28 @@ matrizLibrary
                                           
 #       'Positive' Class : 1               
                               
+trainig$Turno <- as.factor(trainig$Turno)
+test$Turno <- as.factor(test$Turno)
+
+# El código utiliza la función "rpart" para ajustar un modelo de árbol de decisión a los datos de "entrenamiento". El argumento "rpart.control" 
+# especifica algunos parámetros de control para el proceso de ajuste del modelo, incluido el parámetro "minsplit" que determina el número mínimo 
+# de observaciones necesarias para dividir un nodo.
+
+mdl.TurnoRpart <- rpart(Turno ~ . ,data = trainig,control=rpart.control(minsplit=2))
+summary(mdl.TurnoRpart)
+
+mdl.Turno.Predict <- predict(mdl.TurnoRpart, newdata =  test)
+mdl.Turno.Predict
+summary(mdl.Turno.Predict)
+
+#     Noche             Tarde       
+# Min.   :0.00000   Min.   :0.0000  
+# 1st Qu.:0.03846   1st Qu.:0.0000  
+# Median :0.09091   Median :0.9091  
+# Mean   :0.40471   Mean   :0.5953  
+# 3rd Qu.:1.00000   3rd Qu.:0.9615  
+# Max.   :1.00000   Max.   :1.0000 
+
+accuracy <- sum(diag(matriz))/sum(matriz)
+accuracy
+#[1] 0.8172043
