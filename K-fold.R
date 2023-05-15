@@ -72,6 +72,11 @@ cat("SD R^2:", sd_r_squared, "\n")        # desviación estándar del R^2 en los
 
 
 ####### Me quede aqui... nuevos datos para ver si el modelo funciona con las nuevas entradas 
+# Hacer de nuevo el preprocesamiento 
+
+
+
+
 
 # Entrenar el modelo en todo el conjunto de datos de entrenamiento
 modelo_consumo <- lm(Consumo ~ ., data = df.Datos)
