@@ -6,7 +6,7 @@ library(caret)
 
 source("Preprocesamiento.R")
 
-# Valodacion cruzada -> permite obtener la exactitud promedio del modelo
+# Validacion cruzada -> permite obtener la exactitud promedio del modelo
 
 ########          K-fold       #######
 
