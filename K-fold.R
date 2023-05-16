@@ -4,11 +4,14 @@ setwd("/Users/jack9/Downloads/SSPIAII.G02.N6.ProyectoML")   # Cambiar la ruta
 
 library(caret)
 
+# Llamamos al archivo con los datos anteriores
 source("Preprocesamiento.R")
 
 # Validacion cruzada -> permite obtener la exactitud promedio del modelo
 
-########          K-fold       #######
+###############################################################
+#                        K-fold   
+###############################################################
 
 # 1 -> Variable k del número de folds a utilizar. Por ejemplo, k <- 5
 # 2 -> Dividir los datos en k partes iguales. 
@@ -16,14 +19,12 @@ source("Preprocesamiento.R")
 #   Por ejemplo, folds <- createFolds(df.Datos$Consumo, k = k).
 # 3 --> Utiliza un bucle for para iterar sobre los k folds. 
 
-library(caret)
 
 # especificar el número de k-folds
-k <- 5
+k <- 3
 library(caret)
 set.seed(123) # para reproducibilidad
 folds <- createFolds(df.Datos$Consumo, k = k)
-
 
 # inicializar vector para guardar los valores de R^2
 r_squared <- numeric(k)
@@ -70,25 +71,84 @@ cat("SD RMSE:", sd_rmse, "\n")            # desviación estándar del RMSE
 cat("Mean R^2:", mean_r_squared, "\n")    # promedio del coeficiente de determinación (R^2) 
 cat("SD R^2:", sd_r_squared, "\n")        # desviación estándar del R^2 en los k-folds
 
+# ¿Por qué K = 3? 
 
-####### Me quede aqui... nuevos datos para ver si el modelo funciona con las nuevas entradas 
-# Hacer de nuevo el preprocesamiento 
+# k = 4 --> R^2: 0.7194404  
+# K = 6 --> R^2: 0.7176395
+# k = 5 --> R^2: 0.7182101 
+# k = 3 --> R^2: 0.7226803       Nos arroja el mejor resultado
+# k = 2 --> R^2: 0.7161765        
 
 
+###############################################################
+#                   Validación del modelo  
+###############################################################
+
+####### Preprocesar los nuevos datos 
+
+#Importar nuestro dataset
+df.validation <- read.csv("IA/SSPIAII.G02.N6.ProyectoML/Vancouver_Wings_Validation.csv",   #Cambiar ruta
+                     header =  T,
+                     stringsAsFactors = T)
+
+# De una vez eliminamos la comumna Id 
+df.validation$ID <- NULL
+
+# Verificamos si hay valores NA
+colSums(is.na(df.validation))   
+
+#Convertimos a factor  
+df.validation$Tipo_Grupo <- factor(df.validation$Tipo_Grupo,
+                              levels = c("Familia", "Amigos", "Pareja", "Solo"),
+                              labels = c(1,2,3,4))   #Converir a factores
+
+# Calculamos la frecuencia de cada uno de los factores
+tabla <- table(df.validation$Tipo_Grupo, exclude = NULL)
+summary(df.validation)
+
+# Obtener la moda a partir de los valores más frecuentes
+moda <- names(tabla)[which.max(tabla)]
+
+# Cambiamos los NA por la moda 
+df.validation$Tipo_Grupo <- factor(ifelse(is.na(df.validation$Tipo_Grupo), moda, df.validation$Tipo_Grupo))
+
+# Verificamos nuavamente si hay NA
+colSums(is.na(df.validation)) 
+
+#Convertimos a factor los metodos de pago (Efectivo y tarjeta)
+df.validation$Metodo_Pago <- factor(df.validation$Metodo_Pago,
+                               levels = c("Efectivo", "Tarjeta"),
+                               labels = c(0,1))   #Converir a factores
+
+#Convertimos a factor los turnos en los que consumio (Tarde y Noche)
+df.validation$Turno <- factor(df.validation$Turno,
+                         levels = c("Noche","Tarde"),
+                         labels = c(0,1))   #Converir a factores
+
+#Convertimos a factor los Dias de la semana (Martes se descansa)
+df.validation$Dia <- factor(df.validation$Dia,
+                            levels = c("Lunes", "Miércoles ", "Jueves", "Viernes", "Sábado", "Domingo"),
+                            labels = c(1,2,3,4,5,6))   #Converir a factores
 
 
+# Recortar el dataset a 226 filas 
+df.recortado <- head(df.Datos, 226)
+#El dataset se debe recortar ya que el de validacion tiene 226 observaciones,
+# si ni lo recortamos nos dara un error 
 
-# Entrenar el modelo en todo el conjunto de datos de entrenamiento
-modelo_consumo <- lm(Consumo ~ ., data = df.Datos)
+#Aqui se entrena el modelo con 226 datos de los que ya teniamos de df.data
+modelo<- lm(Consumo ~ ., data = df.recortado)
 
 # Hacer predicciones en los datos nuevos
-predicciones_nuevas <- predict(modelo_consumo, newdata = df.Datos)
+predicciones_nuevas <- predict(modelo, newdata = df.validation)
 
 # Crear un data frame con los datos observados y predichos en los nuevos datos
-df_pred_nuevos <- data.frame(Consumo_obs = df.NuevosDatos$Consumo, Consumo_pred = predicciones_nuevas)
-
-# Definir colores personalizados
+df_pred_nuevos <- data.frame(Consumo_obs = df.validation$Consumo, Consumo_pred = predicciones_nuevas)
+ 
+# Definir colores personalizados Con el dataframe creado 
 df_pred_nuevos$colores <- ifelse(df_pred_nuevos$Consumo_obs > df_pred_nuevos$Consumo_pred, "Predicción baja", "Predicción alta")
+
+library(ggplot2)
 
 # Crear el gráfico 
 ggplot(df_pred_nuevos, aes(x = Consumo_obs, y = Consumo_pred, color = colores)) +
@@ -103,6 +163,7 @@ ggplot(df_pred_nuevos, aes(x = Consumo_obs, y = Consumo_pred, color = colores)) 
 #########################################################################################################################################################
                                     # K-FOLD CLASIFICACIÓN #
 #########################################################################################################################################################
+
 library(caret)
 
 # Especificar el número de k-folds
