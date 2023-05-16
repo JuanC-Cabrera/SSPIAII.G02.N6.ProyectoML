@@ -1,6 +1,6 @@
 
 getwd()
-setwd("C:/Users/Yayaz/Documents/IA/SSPIAII.G02.N6.ProyectoML ")   # Cambiar la ruta
+setwd("/Users/jack9/Downloads/SSPIAII.G02.N6.ProyectoML")   # Cambiar la ruta
 
 library(caret)
 
@@ -100,6 +100,48 @@ ggplot(df_pred_nuevos, aes(x = Consumo_obs, y = Consumo_pred, color = colores)) 
   scale_color_manual(values = c("Predicción alta" = "blue", "Predicción baja" = "red")) +
   theme_bw()
 
+#########################################################################################################################################################
+                                    # K-FOLD CLASIFICACIÓN #
+#########################################################################################################################################################
+library(caret)
 
+# Especificar el número de k-folds
+k <- 5
 
+set.seed(123) # para reproducibilidad
+foldsc <- createFolds(df.Datos$Tipo_Grupo, k = k)
 
+# Inicializar vector para guardar los valores de precisión
+accuracy <- numeric(k)
+
+for (i in 1:k) {
+  # Obtener los índices del fold i
+  fold_indicesi <- foldsc[[i]]
+  
+  # Crear los conjuntos de entrenamiento y validación
+  training_data <- df.Datos[-fold_indicesi, ]
+  validi_data <- df.Datos[fold_indicesi, ]
+  
+  # Entrenar el modelo de clasificación en el conjunto de entrenamiento
+  modelo_clasificacion <- train(Tipo_Grupo ~ ., data = training_data, method = "rf")
+  
+  # Hacer predicciones en el conjunto de validación
+  predicciones <- predict(modelo_clasificacion, newdata = validi_data)
+  
+  # Calcular la precisión del modelo
+  acc <- confusionMatrix(predicciones, validi_data$Tipo_Grupo)$overall["Accuracy"]
+  
+  # Almacenar la precisión en el vector
+  accuracy[i] <- acc
+  
+  # Imprimir el resultado del fold i
+  cat("Fold", i, "- Accuracy:", acc, "\n")
+}
+
+# Calcular el promedio y la desviación estándar de la precisión
+mean_accuracy <- mean(accuracy)
+sd_accuracy <- sd(accuracy)
+
+# Imprimir el resultado
+cat("Mean Accuracy:", mean_accuracy, "\n")        # valor promedio de la precisión
+cat("SD Accuracy:", sd_accuracy, "\n")            # desviación estándar de la precisión en los k-folds
